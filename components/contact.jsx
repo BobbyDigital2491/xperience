@@ -1,7 +1,7 @@
 import React from 'react'
 import Head from 'next/head'
-import Contact from '../components/Contact'
-import Hero from '../components/Hero'
+
+import Hero from './Hero'
 import Footer from '../components/Footer'
 
 const contact = () => {
@@ -14,7 +14,7 @@ const contact = () => {
       </Head>
       <br/><br/><br/><br/>
         <Hero heading='Contact' message='Submit the form below for more work and quotes.' />
-        <Contact />
+        
         <Footer />
     </div>
   )
