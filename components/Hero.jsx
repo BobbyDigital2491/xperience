@@ -1,17 +1,19 @@
-import React from 'react';
+/* eslint-disable @next/next/no-img-element */
+import React from 'react'
 
-const Hero = ({heading, message}) => {
-  return (
-    <div className='flex items-center justify-center h-screen mb-12 bg-fixed bg-center bg-cover custom-img'>
-      {/* Overlay */}
-      <div className='absolute top-0 left-0 right-0 bottom-0 bg-black/70 z-[2]' />
-      <div className='p-5 text-white z-[2] mt-[-10rem]'>
-        <h2 className='text-5xl font-bold'>{heading}</h2>
-        <p className='py-5 text-xl'>{message}</p>
-        <button className='px-8 py-2 border'>Book</button>
-      </div>
+const Hero = () => {
+  return ( 
+    <div className='max-w-[1640px] mx-auto p-4'>
+        <div className='max-h-[500px] relative'>
+            {/* Overlay */}
+            <div className='absolute w-full h-full text-gray-200 max-h-[500px] bg-black/40 flex flex-col justify-center'>
+                <h1 className='px-4 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold'>The <span className='text-orange-500'>Xperience</span></h1>
+                <h1 className='px-4 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold'> <span className='text-orange-500'>Coffee House</span> &  <br/>Juice Bar</h1>
+            </div>
+            <img className='w-full max-h-[500px] object-cover' src="/coffee.png" alt="/" />
+        </div>
     </div>
-  );
-};
+  )
+}
 
-export default Hero;
+export default Hero

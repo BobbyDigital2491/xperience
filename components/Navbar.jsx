@@ -1,86 +1,71 @@
+import React, {useState} from 'react';
+import { AiOutlineMenu,  AiOutlineClose, AiFillTag } from 'react-icons/ai';
+import { BsFillSaveFill } from 'react-icons/bs';
+import {TbCoffee} from 'react-icons/tb'
+import {FaUserFriends} from 'react-icons/fa'
+import { MdBrunchDining,MdHeadphones, MdQuestionAnswer,} from 'react-icons/md'
 import Link from 'next/link';
-import React, { useState, useEffect } from 'react';
-import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai';
+
 
 const Navbar = () => {
-  const [nav, setNav] = useState(false);
-  const [color, setColor] = useState('transparent');
-  const [textColor, setTextColor] = useState('white');
-
-  const handleNav = () => {
-    setNav(!nav);
-  };
-
-  useEffect(() => {
-    const changeColor = () => {
-      if (window.scrollY >= 90) {
-        setColor('#ffffff');
-        setTextColor('#000000');
-      } else {
-        setColor('transparent');
-        setTextColor('#ffffff');
-      }
-    };
-    window.addEventListener('scroll', changeColor);
-  }, []);
+const [nav, setNav] = useState(false)
 
   return (
-    <div
-      style={{ backgroundColor: `${color}` }}
-      className='fixed left-0 top-0 w-full z-10 ease-in duration-300'
-    >
-      <div className='max-w-[1240px] m-auto flex justify-between items-center p-4 text-white'>
-        <Link href='/'>
-          <h1 style={{ color: `${textColor}` }} className='font-bold text-4xl'>
-            Captur
-          </h1>
-        </Link>
-        <ul style={{ color: `${textColor}` }} className='hidden sm:flex'>
-          <li className='p-4'>
-            <Link href='/'>Home</Link>
-          </li>
-          <li className='p-4'>
-            <Link href='/#gallery'>Gallery</Link>
-          </li>
-          <li className='p-4'>
-            <Link href='/work'>Work</Link>
-          </li>
-          <li className='p-4'>
-            <Link href='/contact'>Contact</Link>
-          </li>
-        </ul>
+    <div className='max-w-[1640px] mx-auto flex justify-between items-center p-4'>
+      {/* Left side */}
+      <div className='flex items-center'>
+        <div onClick={()=> setNav(!nav)} className='cursor-pointer'>
+          <AiOutlineMenu size={30} />
+        </div>
+        <h1 className='text-2xl sm:text-3xl lg:text-4xl px-2'>
+          The <span className='font-bold text-orange-500'>Xperience </span>
+        </h1>
+        
+      </div>
 
-        {/* Mobile Button */}
-        <div onClick={handleNav} className='block sm:hidden z-10'>
-          {nav ? (
-            <AiOutlineClose size={20} style={{ color: `${textColor}` }} />
-          ) : (
-            <AiOutlineMenu size={20} style={{ color: `${textColor}` }} />
-          )}
-        </div>
-        {/* Mobile Menu */}
-        <div
-          className={
-            nav
-              ? 'sm:hidden absolute top-0 left-0 right-0 bottom-0 flex justify-center items-center w-full h-screen bg-black text-center ease-in duration-300'
-              : 'sm:hidden absolute top-0 left-[-100%] right-0 bottom-0 flex justify-center items-center w-full h-screen bg-black text-center ease-in duration-300'
-          }
-        >
-          <ul>
-            <li onClick={handleNav} className='p-4 text-4xl hover:text-gray-500'>
-              <Link href='/'>Home</Link>
-            </li>
-            <li onClick={handleNav} className='p-4 text-4xl hover:text-gray-500'>
-              <Link href='/#gallery'>Gallery</Link>
-            </li>
-            <li onClick={handleNav} className='p-4 text-4xl hover:text-gray-500'>
-              <Link href='/work'>Work</Link>
-            </li>
-            <li onClick={handleNav} className='p-4 text-4xl hover:text-gray-500'>
-              <Link href='/contact'>Contact</Link>
-            </li>
-          </ul>
-        </div>
+      {/* Search Input */}
+      {/*<div className='bg-gray-200 rounded-full flex items-center px-2 w-[200px] sm:w-[400px] lg:w-[500px]'>
+        <AiOutlineSearch size={25} />
+        <input
+          className='bg-transparent p-2 w-full focus:outline-none'
+          type='text'
+          placeholder='Search items'
+        />
+      </div>*/}
+      {/* Food Menu button */}
+      <Link href="https://order.toasttab.com/online/the-xperience-1454-rockaway-parkway" className='bg-black text-white text-right hidden md:flex items-center py-2 w-32 rounded-full'>
+        <button className='bg-black text-white text-right hidden md:flex items-center py-2 w-32 rounded-full'>
+        <TbCoffee size={22} className=' ml-1' /> 
+        Order Now
+      </button>
+      </Link>
+
+      {/* Mobile Menu */}
+      {/* Overlay */}
+      {nav ? <div className='bg-black/80 fixed w-full h-screen z-10 top-0 left-0'></div> : ''}
+      
+
+      {/* Side drawer menu */}
+      <div className={nav ? 'fixed top-0 left-0 w-[300px] h-screen bg-white z-10 duration-300' : 'fixed top-0 left-[-100%] w-[300px] h-screen bg-white z-10 duration-300' }>
+        <AiOutlineClose
+            onClick={()=> setNav(!nav)}
+          size={30}
+          className='absolute right-4 top-4 cursor-pointer'
+        />
+        <h2 className='text-2xl p-4'>
+          The <span className='font-bold text-orange-400'>Xperience</span>
+        </h2>
+        <nav>
+            <ul className='flex flex-col p-4 text-gray-800'>
+            <a href="/About"><li className='text-xl py-4 flex'><TbCoffee size={25} className='mr-4' />About Us</li></a>
+            <a href="https://order.toasttab.com/online/the-xperience-1454-rockaway-parkway"><li className='text-xl py-4 flex'><MdBrunchDining size={25} className='mr-4' />Dining Xperience</li></a>
+                <li className='text-xl py-4 flex'><MdHeadphones size={25} className='mr-4' /> Podcasting Room</li>
+                <li className='text-xl py-4 flex'><MdQuestionAnswer size={25} className='mr-4' /> Help</li>
+                <li className='text-xl py-4 flex'><AiFillTag size={25} className='mr-4' /> Promotions</li>
+                <li className='text-xl py-4 flex'><BsFillSaveFill size={25} className='mr-4' /> Best Ones</li>
+                <li className='text-xl py-4 flex'><FaUserFriends size={25} className='mr-4' /> Invite Friends</li>
+            </ul>
+        </nav>
       </div>
     </div>
   );
