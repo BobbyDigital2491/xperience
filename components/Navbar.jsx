@@ -35,9 +35,7 @@ const [nav, setNav] = useState(false)
       {/* Food Menu button */}
       <Link href="https://order.toasttab.com/online/the-xperience-1454-rockaway-parkway" className='bg-black text-white text-right hidden md:flex items-center py-2 w-32 rounded-full'>
         <button className='bg-black text-white text-right hidden md:flex items-center py-2 w-32 rounded-full'>
-        <TbCoffee size={22} className=' ml-1' /> 
-        Order Now
-      </button>
+        <TbCoffee size={22} className=' ml-3' />Order Now</button>
       </Link>
 
       {/* Mobile Menu */}
